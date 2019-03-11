@@ -88,7 +88,7 @@ public class BasicIndexPageHardAssertsTest {
         String mainWindow = driver.getWindowHandle();
         driver.switchTo().frame("iframe");
         assertTrue(driver.findElements(By.cssSelector(".epam-logo img")).size() > 0);
-        
+
         //12 Switch to original window back
         driver.switchTo().window(mainWindow);
 
@@ -96,8 +96,14 @@ public class BasicIndexPageHardAssertsTest {
         assertEquals(driver.findElement(By.cssSelector("h3:not(.main-title)")).getText(), "JDI GITHUB");
 
         //14 Assert that JDI GITHUB is a link and has a proper URL
+        assertTrue(driver.findElements(By.linkText("JDI GITHUB")).size() > 0);
+        assertEquals(driver.findElement(By.linkText("JDI GITHUB")).getAttribute("href"), "https://github.com/epam/JDI");
+
         //15 Assert that there is Left Section
+        assertTrue(driver.findElement(By.cssSelector("[name='navigation-sidebar']")).isDisplayed());
+
         //16 Assert that there is Footer
+        assertTrue(driver.findElement(By.cssSelector("footer")).isDisplayed());
 
         //17 Close Browser
         driver.close();
