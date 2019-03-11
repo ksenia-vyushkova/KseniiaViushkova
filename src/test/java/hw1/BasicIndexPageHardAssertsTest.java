@@ -52,13 +52,26 @@ public class BasicIndexPageHardAssertsTest {
         }
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
-        List<WebElement> images = driver.findElements(By.cssSelector(".icons-benefit"));
-        assertEquals(images.size(), 4);
-        for (WebElement image : images) {
-            assertTrue(image.isDisplayed());
+        List<WebElement> benefitImages = driver.findElements(By.cssSelector(".icons-benefit"));
+        assertEquals(benefitImages.size(), 4);
+        for (WebElement benefitImage : benefitImages) {
+            assertTrue(benefitImage.isDisplayed());
         }
 
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
+        String[] expectedBenefitTexts = {
+                "To include good practices\nand ideas from successful\nEPAM project",
+                "To be flexible and\ncustomizable",
+                "To be multiplatform",
+                "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…"
+        };
+        List<WebElement> benefitTexts = driver.findElements(By.cssSelector(".benefit-txt"));
+        assertEquals(benefitTexts.size(), 4);
+        for (WebElement benefitText : benefitTexts) {
+            assertTrue(benefitText.isDisplayed());
+            assertEquals(benefitText.getText(), expectedBenefitTexts[benefitTexts.indexOf(benefitText)]);
+        }
+
         //9 Assert a text of the main headers
         //10 Assert that there is the iframe in the center of page
         //11 Switch to the iframe and check that there is Epam logo in the left top conner of iframe
