@@ -42,13 +42,15 @@ public class BasicIndexPageHardAssertsTest {
         assertEquals(driver.getTitle(), "Home Page");
 
         //6 Assert that there are 4 items on the header section are displayed and they have proper texts
-        String[] navItems = {"HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"};
-        for (int i = 0; i < navItems.length; i++) {
+        String[] expectedNavItems = {"HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"};
+        List<WebElement> navItems = driver.findElements(By.cssSelector(".uui-header  .uui-navigation.nav > li > a"));
+        assertEquals(navItems.size(), expectedNavItems.length);
+        for (int i = 0; i < expectedNavItems.length; i++) {
             WebElement navElem = driver.findElement(By.cssSelector(".uui-header  .uui-navigation.nav > li:nth-child("
                     + (i + 1) + ") a"));
             String navText = navElem.getText();
             assertTrue(navElem.isDisplayed());
-            assertEquals(navText, navItems[i]);
+            assertEquals(navText, expectedNavItems[i]);
         }
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
@@ -66,17 +68,33 @@ public class BasicIndexPageHardAssertsTest {
                 "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…"
         };
         List<WebElement> benefitTexts = driver.findElements(By.cssSelector(".benefit-txt"));
-        assertEquals(benefitTexts.size(), 4);
+        assertEquals(benefitTexts.size(), expectedBenefitTexts.length);
         for (WebElement benefitText : benefitTexts) {
             assertTrue(benefitText.isDisplayed());
             assertEquals(benefitText.getText(), expectedBenefitTexts[benefitTexts.indexOf(benefitText)]);
         }
 
         //9 Assert a text of the main headers
+        assertEquals(driver.findElement(By.cssSelector("h3.main-title")).getText(), "EPAM FRAMEWORK WISHES…");
+        assertEquals(driver.findElement(By.cssSelector(".main-txt")).getText(), "LOREM IPSUM DOLOR SIT AMET, " +
+                "CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. " +
+                "UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO " +
+                "CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.");
+
         //10 Assert that there is the iframe in the center of page
+        assertTrue(driver.findElements(By.cssSelector("iframe")).size() > 0);
+
         //11 Switch to the iframe and check that there is Epam logo in the left top conner of iframe
+        String mainWindow = driver.getWindowHandle();
+        driver.switchTo().frame("iframe");
+        assertTrue(driver.findElements(By.cssSelector(".epam-logo img")).size() > 0);
+        
         //12 Switch to original window back
+        driver.switchTo().window(mainWindow);
+
         //13 Assert a text of the sub header
+        assertEquals(driver.findElement(By.cssSelector("h3:not(.main-title)")).getText(), "JDI GITHUB");
+
         //14 Assert that JDI GITHUB is a link and has a proper URL
         //15 Assert that there is Left Section
         //16 Assert that there is Footer
