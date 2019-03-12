@@ -15,7 +15,7 @@ import static org.testng.Assert.assertTrue;
 public class BasicIndexPageHardAssertsTest {
 
     @Test
-    public void testBasicFunctionality() {
+    public void testBasicFunctionalityWithHardAsserts() {
 
         //Setup Chrome driver
         System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
@@ -45,12 +45,9 @@ public class BasicIndexPageHardAssertsTest {
         String[] expectedNavItems = {"HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"};
         List<WebElement> navItems = driver.findElements(By.cssSelector(".uui-header  .uui-navigation.nav > li > a"));
         assertEquals(navItems.size(), expectedNavItems.length);
-        for (int i = 0; i < expectedNavItems.length; i++) {
-            WebElement navElem = driver.findElement(By.cssSelector(".uui-header  .uui-navigation.nav > li:nth-child("
-                    + (i + 1) + ") a"));
-            String navText = navElem.getText();
-            assertTrue(navElem.isDisplayed());
-            assertEquals(navText, expectedNavItems[i]);
+        for (WebElement navItem : navItems) {
+            assertTrue(navItem.isDisplayed());
+            assertEquals(navItem.getText(), expectedNavItems[navItems.indexOf(navItem)]);
         }
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
