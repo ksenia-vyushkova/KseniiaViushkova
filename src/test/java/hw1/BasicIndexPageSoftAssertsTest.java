@@ -10,8 +10,6 @@ import org.testng.asserts.SoftAssert;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.Assert.assertEquals;
-
 public class BasicIndexPageSoftAssertsTest {
 
     @Test
@@ -46,7 +44,7 @@ public class BasicIndexPageSoftAssertsTest {
         //6 Assert that there are 4 items on the header section are displayed and they have proper texts
         String[] expectedNavItems = {"HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"};
         List<WebElement> navItems = driver.findElements(By.cssSelector(".uui-header  .uui-navigation.nav > li > a"));
-        assertEquals(navItems.size(), expectedNavItems.length);
+        softAssert.assertEquals(navItems.size(), expectedNavItems.length);
         for (WebElement navItem : navItems) {
             softAssert.assertTrue(navItem.isDisplayed());
             softAssert.assertEquals(navItem.getText(), expectedNavItems[navItems.indexOf(navItem)]);
@@ -54,7 +52,7 @@ public class BasicIndexPageSoftAssertsTest {
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> benefitImages = driver.findElements(By.cssSelector(".icons-benefit"));
-        assertEquals(benefitImages.size(), 4);
+        softAssert.assertEquals(benefitImages.size(), 4);
         for (WebElement benefitImage : benefitImages) {
             softAssert.assertTrue(benefitImage.isDisplayed());
         }
@@ -67,7 +65,7 @@ public class BasicIndexPageSoftAssertsTest {
                 "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…"
         };
         List<WebElement> benefitTexts = driver.findElements(By.cssSelector(".benefit-txt"));
-        assertEquals(benefitTexts.size(), expectedBenefitTexts.length);
+        softAssert.assertEquals(benefitTexts.size(), expectedBenefitTexts.length);
         for (WebElement benefitText : benefitTexts) {
             softAssert.assertTrue(benefitText.isDisplayed());
             softAssert.assertEquals(benefitText.getText(), expectedBenefitTexts[benefitTexts.indexOf(benefitText)]);
