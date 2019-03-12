@@ -36,6 +36,7 @@ public class BasicIndexPageHardAssertsTest {
         driver.findElement(By.id("login-button")).click();
 
         //4 Assert User name in the left-top side of screen that user is logged in
+        assertTrue(driver.findElement(By.id("user-name")).isDisplayed());
         assertEquals(driver.findElement(By.id("user-name")).getText(), "PITER CHAILOVSKII");
 
         //5 Assert Browser title
@@ -72,7 +73,9 @@ public class BasicIndexPageHardAssertsTest {
         }
 
         //9 Assert a text of the main headers
+        assertTrue(driver.findElement(By.cssSelector("h3.main-title")).isDisplayed());
         assertEquals(driver.findElement(By.cssSelector("h3.main-title")).getText(), "EPAM FRAMEWORK WISHES…");
+        assertTrue(driver.findElement(By.cssSelector(".main-txt")).isDisplayed());
         assertEquals(driver.findElement(By.cssSelector(".main-txt")).getText(), "LOREM IPSUM DOLOR SIT AMET, " +
                 "CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. " +
                 "UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO " +
@@ -90,10 +93,11 @@ public class BasicIndexPageHardAssertsTest {
         driver.switchTo().window(mainWindow);
 
         //13 Assert a text of the sub header
+        assertTrue(driver.findElement(By.cssSelector("h3:not(.main-title)")).isDisplayed());
         assertEquals(driver.findElement(By.cssSelector("h3:not(.main-title)")).getText(), "JDI GITHUB");
 
         //14 Assert that JDI GITHUB is a link and has a proper URL
-        assertTrue(driver.findElements(By.linkText("JDI GITHUB")).size() > 0);
+        assertTrue(driver.findElement(By.linkText("JDI GITHUB")).isDisplayed());
         assertEquals(driver.findElement(By.linkText("JDI GITHUB")).getAttribute("href"), "https://github.com/epam/JDI");
 
         //15 Assert that there is Left Section
