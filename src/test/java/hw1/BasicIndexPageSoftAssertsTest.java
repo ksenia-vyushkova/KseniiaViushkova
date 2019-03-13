@@ -11,11 +11,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class BasicIndexPageSoftAssertsTest {
-
-    /*
-     TODO I have modified this test in order to get an error, but nothing happened and test finished as passed.
-     Smth is missed.
-      */
+    
     @Test
     public void testBasicFunctionalityWithSoftAsserts() {
 
@@ -79,7 +75,7 @@ public class BasicIndexPageSoftAssertsTest {
         softAssert.assertTrue(driver.findElement(By.cssSelector("h3.main-title")).isDisplayed());
         softAssert.assertEquals(driver.findElement(By.cssSelector("h3.main-title")).getText(), "EPAM FRAMEWORK WISHES…");
         softAssert.assertTrue(driver.findElement(By.cssSelector(".main-txt")).isDisplayed());
-        softAssert.assertEquals(driver.findElement(By.cssSelector(".main-txt")).getText(), "1LOREM IPSUM DOLOR SIT AMET, " +
+        softAssert.assertEquals(driver.findElement(By.cssSelector(".main-txt")).getText(), "LOREM IPSUM DOLOR SIT AMET, " +
                 "CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. " +
                 "UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO " +
                 "CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.");
@@ -111,6 +107,9 @@ public class BasicIndexPageSoftAssertsTest {
 
         //17 Close Browser
         driver.close();
+
+        //18 Collect failed soft assertions
+        softAssert.assertAll();
     }
 
 }
