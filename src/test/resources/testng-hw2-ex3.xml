@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Refactored Basic Test Suite" verbose="1">
+    <test name="Refactored Basic Test">
+
+        <classes>
+            <class name="hw2.ex3.BasicIndexPageRefactoredTest">
+                <methods>
+                    <include name="testBasicFunctionality"/>
+                </methods>
+            </class>
+        </classes>
+
+    </test>
+</suite>
