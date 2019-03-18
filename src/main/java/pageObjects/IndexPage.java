@@ -132,14 +132,14 @@ public class IndexPage {
         driver.switchTo().defaultContent();
     }
 
-    public void checkSubTitle() {
+    public void checkSubTitle(String expectedSubTitle) {
         assertTrue(subTitle.isDisplayed());
-        assertEquals(subTitle.getText(), "JDI GITHUB");
+        assertEquals(subTitle.getText(), expectedSubTitle);
     }
 
-    public void checkJdiLink() {
+    public void checkJdiLink(String expectedJdiLinkHref) {
         assertTrue(jdiLink.isDisplayed());
-        assertEquals(jdiLink.getAttribute("href"), "https://github.com/epam/JDI");
+        assertEquals(jdiLink.getAttribute("href"), expectedJdiLinkHref);
     }
 
     public void checkNavSidebar() {

@@ -82,10 +82,10 @@ public class BasicIndexPageObjectTest extends BasicTestBase {
         indexPage.checkLogoInIframe();
 
         //13 Assert a text of the sub header
-        indexPage.checkSubTitle();
+        indexPage.checkSubTitle("JDI GITHUB");
 
         //14 Assert that JDI GITHUB is a link and has a proper URL
-        indexPage.checkJdiLink();
+        indexPage.checkJdiLink("https://github.com/epam/JDI");
 
         //15 Assert that there is Left Section
         indexPage.checkNavSidebar();
