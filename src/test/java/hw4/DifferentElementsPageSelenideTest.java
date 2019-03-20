@@ -9,6 +9,10 @@ import pageObjects.IndexPageSelenide;
 
 import static com.codeborne.selenide.Selenide.page;
 import static enums.User.PITER_CHALOVSKII;
+import static enums.elements.CheckBox.WATER;
+import static enums.elements.CheckBox.WIND;
+import static enums.elements.RadioButton.SELEN;
+import static enums.elements.SelectOption.YELLOW;
 
 public class DifferentElementsPageSelenideTest extends SelenideTestBase {
 
@@ -22,7 +26,7 @@ public class DifferentElementsPageSelenideTest extends SelenideTestBase {
     }
 
     @Test
-    public void testDifferentElementsPage(){
+    public void testDifferentElementsPage() {
         User user = PITER_CHALOVSKII;
 
         //1 Open test site by URL
@@ -57,14 +61,29 @@ public class DifferentElementsPageSelenideTest extends SelenideTestBase {
         //10 Assert that there is Left Section
         differentElementsPageSelenide.checkNavSidebar();
 
-        //11 Select checkboxes
-        //12 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
-        //13 Select radio
-        //14 Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
-        //15 Select in dropdown
-        //16 Assert that for dropdown there is a log row and value is corresponded to the selected value. 
-        //17 Unselect and assert checkboxes
-        //18 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
+        //11, 12 Select checkboxes. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
+        differentElementsPageSelenide.tickCheckBox(WATER);
+        differentElementsPageSelenide.checkLastLogContains(WATER.label, WATER.on);
 
+        differentElementsPageSelenide.tickCheckBox(WIND);
+        differentElementsPageSelenide.checkLastLogContains(WIND.label, WIND.on);
+
+        //13, 14 Select radio. Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton.
+        differentElementsPageSelenide.tickRadioButton(SELEN);
+        differentElementsPageSelenide.checkLastLogContains(SELEN.elementName, SELEN.label);
+
+        //15, 16 Select in dropdown. Assert that for dropdown there is a log row and value is corresponded to the selected value.
+        differentElementsPageSelenide.selectColor(YELLOW);
+        differentElementsPageSelenide.checkLastLogContains(YELLOW.elementName, YELLOW.option);
+
+
+        //17, 18 Unselect and assert checkboxes. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
+        differentElementsPageSelenide.untickCheckBox(WATER);
+        differentElementsPageSelenide.checkCheckBoxUnchecked(WATER);
+        differentElementsPageSelenide.checkLastLogContains(WATER.label, WATER.off);
+
+        differentElementsPageSelenide.untickCheckBox(WIND);
+        differentElementsPageSelenide.checkCheckBoxUnchecked(WIND);
+        differentElementsPageSelenide.checkLastLogContains(WIND.label, WIND.off);
     }
 }
