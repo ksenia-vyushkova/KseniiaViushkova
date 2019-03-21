@@ -11,10 +11,10 @@ import static enums.elements.Slider.LEFT_SLIDER;
 
 public class DatesPageSelenide {
 
-    @FindBy(css = ".ui-slider-horizontal > a:first-child")
+    @FindBy(css = ".ui-slider-horizontal > .ui-slider-handle:first-child")
     private SelenideElement leftSlider;
 
-    @FindBy(css = ".ui-slider-horizontal > a:not(:first-child)")
+    @FindBy(css = ".ui-slider-horizontal > .ui-slider-handle:not(:first-child)")
     private SelenideElement rightSlider;
 
     @FindBy(css = ".ui-slider-horizontal")
@@ -34,14 +34,16 @@ public class DatesPageSelenide {
         actions.dragAndDropBy(slider, xOffset, 0).build().perform();
     }
 
-    private double getCssValueAsDouble(SelenideElement element, String cssProperty) {
-        return Double.parseDouble(element.getCssValue(cssProperty).replace("px", ""));
-    }
-
     //================================checks===================================
 
     public void checkLastLogContains(Slider sl, Integer position) {
         log.shouldHave(text(sl.alias));
         log.shouldHave(text(position.toString()));
+    }
+
+    //================================private==================================
+
+    private double getCssValueAsDouble(SelenideElement element, String cssProperty) {
+        return Double.parseDouble(element.getCssValue(cssProperty).replace("px", ""));
     }
 }

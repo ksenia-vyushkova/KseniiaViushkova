@@ -16,6 +16,7 @@ public class DatesPageSlidersSelenideTest extends SelenideTestBase {
 
     private IndexPageSelenide indexPageSelenide;
     private DatesPageSelenide datesPageSelenide;
+    private User user = PITER_CHALOVSKII;
 
     @BeforeClass
     public void beforeClass() {
@@ -25,8 +26,6 @@ public class DatesPageSlidersSelenideTest extends SelenideTestBase {
 
     @Test
     public void testDatesPage() {
-        User user = PITER_CHALOVSKII;
-
         //1 Open test site by URL
         indexPageSelenide.openPage();
 

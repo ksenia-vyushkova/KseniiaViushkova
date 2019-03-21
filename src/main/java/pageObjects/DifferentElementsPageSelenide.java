@@ -67,8 +67,8 @@ public class DifferentElementsPageSelenide {
     }
 
     public void checkElementsPresence() {
-        checkBoxes.shouldHaveSize(4);
-        radioButtons.shouldHaveSize(4);
+        checkBoxes.shouldHaveSize(CheckBox.values().length);
+        radioButtons.shouldHaveSize(RadioButton.values().length);
         select.shouldBe(visible);
         buttons.shouldHaveSize(2);
     }

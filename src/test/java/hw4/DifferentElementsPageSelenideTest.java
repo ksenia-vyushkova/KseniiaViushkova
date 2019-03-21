@@ -18,6 +18,7 @@ public class DifferentElementsPageSelenideTest extends SelenideTestBase {
 
     private IndexPageSelenide indexPageSelenide;
     private DifferentElementsPageSelenide differentElementsPageSelenide;
+    private User user = PITER_CHALOVSKII;
 
     @BeforeClass
     public void beforeClass() {
@@ -27,8 +28,6 @@ public class DifferentElementsPageSelenideTest extends SelenideTestBase {
 
     @Test
     public void testDifferentElementsPage() {
-        User user = PITER_CHALOVSKII;
-
         //1 Open test site by URL
         indexPageSelenide.openPage();
 

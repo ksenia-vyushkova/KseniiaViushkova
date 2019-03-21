@@ -38,7 +38,7 @@ public class IndexPageSelenide {
     private SelenideElement serviceSidebarDropdown;
 
     @FindBy(css = ".uui-side-bar  .sidebar-menu li[index='3'] .sub")
-    private SelenideElement serviceSidebarDropdownMenue;
+    private SelenideElement serviceSidebarDropdownMenu;
 
     @FindBy(css = ".uui-header  .uui-navigation.nav .dropdown .dropdown-menu > li")
     private List<SelenideElement> headerNavServices;
@@ -58,20 +58,6 @@ public class IndexPageSelenide {
         open(INDEX_PAGE.url);
     }
 
-    public void openDifferentElementsPageThroughHeaderDropdown() {
-        if (!serviceHeaderDropdown.getAttribute("class").contains("open")){
-            openServiceHeaderDropdown();
-        }
-        differentElementsHeaderNavOption.click();
-    }
-
-    public void openDatesPageThroughSidebarDropdown() {
-        if (serviceSidebarDropdownMenue.getAttribute("class").contains("hide-menu")){
-            openServiceSidebarDropdown();
-        }
-        datesSidebarNavOption.click();
-    }
-
     public void login(User user) {
         profileButton.click();
         login.sendKeys(user.login);
@@ -79,11 +65,25 @@ public class IndexPageSelenide {
         loginButton.click();
     }
 
-    public void openServiceHeaderDropdown(){
+    public void openDifferentElementsPageThroughHeaderDropdown() {
+        if (!isServiceHeaderDropDownOpen()) {
+            openServiceHeaderDropdown();
+        }
+        differentElementsHeaderNavOption.click();
+    }
+
+    public void openDatesPageThroughSidebarDropdown() {
+        if (!isServiceSidebarDropDownOpen()) {
+            openServiceSidebarDropdown();
+        }
+        datesSidebarNavOption.click();
+    }
+
+    public void openServiceHeaderDropdown() {
         serviceHeaderDropdown.click();
     }
 
-    public void openServiceSidebarDropdown(){
+    public void openServiceSidebarDropdown() {
         serviceSidebarDropdown.click();
     }
 
@@ -98,17 +98,27 @@ public class IndexPageSelenide {
         userName.shouldHave(text(user.userName));
     }
 
-    public void checkServiceHeaderDropdown(){
-        for (Service service : Service.values()){
+    public void checkServiceHeaderDropdown() {
+        for (Service service : Service.values()) {
             headerNavServices.get(service.position).shouldBe(visible);
             headerNavServices.get(service.position).shouldHave(text(service.headerName));
         }
     }
 
-    public void checkServiceSidebarDropdown(){
-        for (Service service : Service.values()){
+    public void checkServiceSidebarDropdown() {
+        for (Service service : Service.values()) {
             sidebarNavServices.get(service.position).shouldBe(visible);
             sidebarNavServices.get(service.position).shouldHave(text(service.sidebarName));
         }
+    }
+
+    //================================private==================================
+
+    private boolean isServiceHeaderDropDownOpen() {
+        return serviceHeaderDropdown.getAttribute("class").contains("open");
+    }
+
+    private boolean isServiceSidebarDropDownOpen() {
+        return !serviceSidebarDropdownMenu.getAttribute("class").contains("hide-menu");
     }
 }
