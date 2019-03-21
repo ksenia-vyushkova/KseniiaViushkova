@@ -2,12 +2,14 @@ package hw4;
 
 import base.SelenideTestBase;
 import enums.User;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pageObjects.DifferentElementsPageSelenide;
 import pageObjects.IndexPageSelenide;
 
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static enums.User.PITER_CHALOVSKII;
 import static enums.elements.CheckBox.WATER;
 import static enums.elements.CheckBox.WIND;
@@ -24,6 +26,11 @@ public class DifferentElementsPageSelenideTest extends SelenideTestBase {
     public void beforeClass() {
         indexPageSelenide = page(IndexPageSelenide.class);
         differentElementsPageSelenide = page(DifferentElementsPageSelenide.class);
+    }
+
+    @AfterClass
+    public void afterClass() {
+        getWebDriver().manage().deleteAllCookies();
     }
 
     @Test
