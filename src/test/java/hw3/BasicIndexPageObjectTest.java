@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import pageObjects.IndexPage;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class BasicIndexPageObjectTest extends BasicTestBase {
@@ -51,19 +53,19 @@ public class BasicIndexPageObjectTest extends BasicTestBase {
         indexPage.checkTitle();
 
         //6 Assert that there are 4 items on the header section are displayed and they have proper texts
-        String[] expectedNavItems = {"HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"};
+        List<String> expectedNavItems = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
         indexPage.checkNavItems(expectedNavItems);
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
         indexPage.checkBenefitImages(4);
 
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
-        String[] expectedBenefitTexts = {
+        List<String> expectedBenefitTexts = Arrays.asList(
                 "To include good practices\nand ideas from successful\nEPAM project",
                 "To be flexible and\ncustomizable",
                 "To be multiplatform",
                 "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…"
-        };
+        );
         indexPage.checkBenefitTexts(expectedBenefitTexts);
 
         //9 Assert a text of the main headers

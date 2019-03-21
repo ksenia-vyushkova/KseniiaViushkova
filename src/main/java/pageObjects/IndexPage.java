@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -89,18 +90,16 @@ public class IndexPage {
         assertEquals(userName.getText(), expectedUserName);
     }
 
-    public void checkNavItems(String[] expectedNavItems) {
-        assertEquals(navItems.size(), expectedNavItems.length);
+    public void checkNavItems(List<String> expectedNavItems) {
+        assertEquals(navItems.size(), expectedNavItems.size());
         /* TODO Basically, it is not the best idea to create a cycle by WebElement collection,
         cause this might lead us to an issue in some cases (for the example, WebEl with the same text).
          So, the easies way to make this verification is transform List<WebEl> to List<String> and compare
          expected list with actual, TestNg assertion can do it.
          */
-
-        for (WebElement navItem : navItems) {
-            assertTrue(navItem.isDisplayed());
-            assertEquals(navItem.getText(), expectedNavItems[navItems.indexOf(navItem)]);
-        }
+        navItems.forEach(item -> assertTrue(item.isDisplayed()));
+        List<String> actualNavItems = navItems.stream().map(WebElement::getText).collect(Collectors.toList());
+        assertEquals(actualNavItems, expectedNavItems);
     }
 
     public void checkBenefitImages(int expectedImagesCount) {
@@ -110,12 +109,11 @@ public class IndexPage {
         }
     }
 
-    public void checkBenefitTexts(String[] expectedBenefitTexts) {
-        assertEquals(benefitTexts.size(), expectedBenefitTexts.length);
-        for (WebElement benefitText : benefitTexts) {
-            assertTrue(benefitText.isDisplayed());
-            assertEquals(benefitText.getText(), expectedBenefitTexts[benefitTexts.indexOf(benefitText)]);
-        }
+    public void checkBenefitTexts(List<String> expectedBenefitTexts) {
+        assertEquals(benefitTexts.size(), expectedBenefitTexts.size());
+        benefitTexts.forEach(item -> assertTrue(item.isDisplayed()));
+        List<String> actualBenefitTexts = benefitTexts.stream().map(WebElement::getText).collect(Collectors.toList());
+        assertEquals(actualBenefitTexts, expectedBenefitTexts);
     }
 
     public void checkMainTitle(String expectedMainTitle) {
