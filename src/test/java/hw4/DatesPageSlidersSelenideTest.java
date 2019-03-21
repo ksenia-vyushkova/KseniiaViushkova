@@ -73,7 +73,7 @@ public class DatesPageSlidersSelenideTest extends SelenideTestBase {
         //12, 13 Using drag-and-drop set Range sliders.
         //Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPageSelenide.dragAndDropToPosition(LEFT_SLIDER, 30);
-        //datesPageSelenide.checkLastLogContains(LEFT_SLIDER, 30);
+        datesPageSelenide.checkLastLogContains(LEFT_SLIDER, 30);
         datesPageSelenide.dragAndDropToPosition(RIGHT_SLIDER, 70);
         datesPageSelenide.checkLastLogContains(RIGHT_SLIDER, 70);
     }
