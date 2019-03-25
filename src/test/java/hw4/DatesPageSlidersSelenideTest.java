@@ -11,8 +11,6 @@ import pageObjects.IndexPageSelenide;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static enums.User.PITER_CHALOVSKII;
-import static enums.elements.Slider.LEFT_SLIDER;
-import static enums.elements.Slider.RIGHT_SLIDER;
 
 public class DatesPageSlidersSelenideTest extends SelenideTestBase {
 
@@ -50,31 +48,22 @@ public class DatesPageSlidersSelenideTest extends SelenideTestBase {
 
         //6, 7 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
         //Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPageSelenide.dragAndDropToPosition(LEFT_SLIDER, 0);
-        datesPageSelenide.checkLastLogContains(LEFT_SLIDER, 0);
-        datesPageSelenide.dragAndDropToPosition(RIGHT_SLIDER, 100);
-        datesPageSelenide.checkLastLogContains(RIGHT_SLIDER, 100);
+        datesPageSelenide.setSlider(0, 100);
+        datesPageSelenide.checkLog(0, 100);
 
         //8, 9 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most left position.
         //Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPageSelenide.dragAndDropToPosition(LEFT_SLIDER, 0);
-        datesPageSelenide.checkLastLogContains(LEFT_SLIDER, 0);
-        datesPageSelenide.dragAndDropToPosition(RIGHT_SLIDER, 0);
-        datesPageSelenide.checkLastLogContains(RIGHT_SLIDER, 0);
+        datesPageSelenide.setSlider(0, 0);
+        datesPageSelenide.checkLog(0, 0);
 
         //10, 11 Using drag-and-drop set Range sliders. left sliders - the most rigth position, right slider - the most rigth position.
         //Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPageSelenide.dragAndDropToPosition(RIGHT_SLIDER, 100);
-        datesPageSelenide.checkLastLogContains(RIGHT_SLIDER, 100);
-        datesPageSelenide.dragAndDropToPosition(LEFT_SLIDER, 100);
-        datesPageSelenide.checkLastLogContains(LEFT_SLIDER, 100);
-
+        datesPageSelenide.setSlider(100, 100);
+        datesPageSelenide.checkLog(100, 100);
 
         //12, 13 Using drag-and-drop set Range sliders.
         //Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPageSelenide.dragAndDropToPosition(LEFT_SLIDER, 30);
-        datesPageSelenide.checkLastLogContains(LEFT_SLIDER, 30);
-        datesPageSelenide.dragAndDropToPosition(RIGHT_SLIDER, 70);
-        datesPageSelenide.checkLastLogContains(RIGHT_SLIDER, 70);
+        datesPageSelenide.setSlider(30, 70);
+        datesPageSelenide.checkLog(30, 70);
     }
 }
