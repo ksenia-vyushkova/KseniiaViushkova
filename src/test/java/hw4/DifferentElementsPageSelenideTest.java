@@ -2,7 +2,7 @@ package hw4;
 
 import base.SelenideTestBase;
 import enums.User;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pageObjects.DifferentElementsPageSelenide;
@@ -28,8 +28,8 @@ public class DifferentElementsPageSelenideTest extends SelenideTestBase {
         differentElementsPageSelenide = page(DifferentElementsPageSelenide.class);
     }
 
-    @AfterClass
-    public void afterClass() {
+    @AfterMethod
+    public void afterMethod() {
         getWebDriver().manage().deleteAllCookies();
     }
 

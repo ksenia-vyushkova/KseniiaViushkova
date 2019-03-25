@@ -49,7 +49,6 @@ public class DatesPageSelenide {
             dragAndDropToPosition(leftSlider, leftPosition);
             dragAndDropToPosition(rightSlider, rightPosition);
         }
-
     }
 
     //================================checks===================================
