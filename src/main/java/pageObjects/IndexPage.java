@@ -92,13 +92,11 @@ public class IndexPage {
 
     public void checkNavItems(List<String> expectedNavItems) {
         assertEquals(navItems.size(), expectedNavItems.size());
-        /* TODO Basically, it is not the best idea to create a cycle by WebElement collection,
-        cause this might lead us to an issue in some cases (for the example, WebEl with the same text).
-         So, the easies way to make this verification is transform List<WebEl> to List<String> and compare
-         expected list with actual, TestNg assertion can do it.
-         */
         navItems.forEach(item -> assertTrue(item.isDisplayed()));
-        List<String> actualNavItems = navItems.stream().map(WebElement::getText).collect(Collectors.toList());
+
+        List<String> actualNavItems = navItems.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
         assertEquals(actualNavItems, expectedNavItems);
     }
 

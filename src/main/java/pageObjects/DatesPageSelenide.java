@@ -9,6 +9,13 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static enums.elements.Slider.LEFT_SLIDER;
 
+// TODO
+/*
+In general, this PO is ok, but from my perspective it will be better with methods:
+1. setSlider(int, int) - for set up both slider's values
+2. checkLog(int, int)
+This allow you to decrease amount of code and increase readability of your tests.
+ */
 public class DatesPageSelenide {
 
     @FindBy(css = ".ui-slider-horizontal > .ui-slider-handle:first-child")
