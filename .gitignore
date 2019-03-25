@@ -2,3 +2,5 @@
 /.idea/
 /target/
 /KseniiaViushkova.iml
+# TODO Pay attention on it !
+/build
