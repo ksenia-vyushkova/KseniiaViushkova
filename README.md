@@ -20,3 +20,7 @@ In order for the test to pass, comment the following line in file DatesPageSlide
 ```
 datesPageSelenide.checkLastLogContains(LEFT_SLIDER, 30);
 ```
+
+## HW5
+
+Screenshots of Jenkins job and Allure report can be found at \src\test\resources\hw5
