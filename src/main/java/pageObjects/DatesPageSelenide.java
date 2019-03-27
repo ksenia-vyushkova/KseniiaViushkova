@@ -1,6 +1,7 @@
 package pageObjects;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
@@ -38,6 +39,7 @@ public class DatesPageSelenide {
 
     //================================methods==================================
 
+    @Step
     public void setSlider(int position1, int position2) {
         int leftPosition = min(position1, position2);
         int rightPosition = max(position1, position2);
@@ -53,6 +55,7 @@ public class DatesPageSelenide {
 
     //================================checks===================================
 
+    @Step
     public void checkLog(int position1, int position2) {
         int leftPosition = min(position1, position2);
         int rightPosition = max(position1, position2);

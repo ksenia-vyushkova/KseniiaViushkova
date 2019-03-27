@@ -1,5 +1,6 @@
 package pageObjects;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -68,10 +69,12 @@ public class IndexPage {
 
     //================================methods==================================
 
+    @Step
     public void open() {
         driver.navigate().to("https://epam.github.io/JDI");
     }
 
+    @Step
     public void login(String name, String pwd) {
         profileButton.click();
         login.sendKeys(name);
@@ -81,6 +84,7 @@ public class IndexPage {
 
     //================================checks===================================
 
+    @Step
     public void checkTitle() {
         assertEquals(driver.getTitle(), "Home Page");
     }
@@ -90,6 +94,7 @@ public class IndexPage {
         assertEquals(userName.getText(), expectedUserName);
     }
 
+    @Step
     public void checkNavItems(List<String> expectedNavItems) {
         assertEquals(navItems.size(), expectedNavItems.size());
         navItems.forEach(item -> assertTrue(item.isDisplayed()));
@@ -100,6 +105,7 @@ public class IndexPage {
         assertEquals(actualNavItems, expectedNavItems);
     }
 
+    @Step
     public void checkBenefitImages(int expectedImagesCount) {
         assertEquals(benefitImages.size(), expectedImagesCount);
         for (WebElement benefitImage : benefitImages) {
@@ -107,6 +113,7 @@ public class IndexPage {
         }
     }
 
+    @Step
     public void checkBenefitTexts(List<String> expectedBenefitTexts) {
         assertEquals(benefitTexts.size(), expectedBenefitTexts.size());
         benefitTexts.forEach(item -> assertTrue(item.isDisplayed()));
@@ -114,40 +121,48 @@ public class IndexPage {
         assertEquals(actualBenefitTexts, expectedBenefitTexts);
     }
 
+    @Step
     public void checkMainTitle(String expectedMainTitle) {
         assertTrue(mainTitle.isDisplayed());
         assertEquals(mainTitle.getText(), expectedMainTitle);
     }
 
+    @Step
     public void checkMainText(String expectedMainText) {
         assertTrue(mainText.isDisplayed());
         assertEquals(mainText.getText(), expectedMainText);
     }
 
+    @Step
     public void checkIframe() {
         assertTrue(iframes.size() > 0);
     }
 
+    @Step
     public void checkLogoInIframe() {
         driver.switchTo().frame("iframe");
         assertTrue(driver.findElement(By.cssSelector("#epam_logo")).isDisplayed());
         driver.switchTo().defaultContent();
     }
 
+    @Step
     public void checkSubTitle(String expectedSubTitle) {
         assertTrue(subTitle.isDisplayed());
         assertEquals(subTitle.getText(), expectedSubTitle);
     }
 
+    @Step
     public void checkJdiLink(String expectedJdiLinkHref) {
         assertTrue(jdiLink.isDisplayed());
         assertEquals(jdiLink.getAttribute("href"), expectedJdiLinkHref);
     }
 
+    @Step
     public void checkNavSidebar() {
         assertTrue(navSidebar.isDisplayed());
     }
 
+    @Step
     public void checkFooter() {
         assertTrue(footer.isDisplayed());
     }

@@ -3,6 +3,7 @@ package pageObjects;
 import com.codeborne.selenide.SelenideElement;
 import enums.Service;
 import enums.User;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -58,6 +59,7 @@ public class IndexPageSelenide {
         open(INDEX_PAGE.url);
     }
 
+    @Step
     public void login(User user) {
         profileButton.click();
         login.sendKeys(user.login);
@@ -65,6 +67,7 @@ public class IndexPageSelenide {
         loginButton.click();
     }
 
+    @Step
     public void openDifferentElementsPageThroughHeaderDropdown() {
         if (!isServiceHeaderDropDownOpen()) {
             openServiceHeaderDropdown();
@@ -72,6 +75,7 @@ public class IndexPageSelenide {
         differentElementsHeaderNavOption.click();
     }
 
+    @Step
     public void openDatesPageThroughSidebarDropdown() {
         if (!isServiceSidebarDropDownOpen()) {
             openServiceSidebarDropdown();
@@ -79,25 +83,30 @@ public class IndexPageSelenide {
         datesSidebarNavOption.click();
     }
 
+    @Step
     public void openServiceHeaderDropdown() {
         serviceHeaderDropdown.click();
     }
 
+    @Step
     public void openServiceSidebarDropdown() {
         serviceSidebarDropdown.click();
     }
 
     //================================checks===================================
 
+    @Step
     public void checkTitle() {
         assertEquals(getWebDriver().getTitle(), INDEX_PAGE.title);
     }
 
+    @Step
     public void checkUserName(User user) {
         userName.shouldBe(visible);
         userName.shouldHave(text(user.userName));
     }
 
+    @Step
     public void checkServiceHeaderDropdown() {
         for (Service service : Service.values()) {
             headerNavServices.get(service.position).shouldBe(visible);
@@ -105,6 +114,7 @@ public class IndexPageSelenide {
         }
     }
 
+    @Step
     public void checkServiceSidebarDropdown() {
         for (Service service : Service.values()) {
             sidebarNavServices.get(service.position).shouldBe(visible);

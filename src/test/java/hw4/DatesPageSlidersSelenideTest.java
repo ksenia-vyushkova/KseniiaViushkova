@@ -2,6 +2,8 @@ package hw4;
 
 import base.SelenideTestBase;
 import enums.User;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -12,6 +14,8 @@ import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static enums.User.PITER_CHALOVSKII;
 
+@Feature("Smoke Test")
+@Story("Dates Page Sliders Test")
 public class DatesPageSlidersSelenideTest extends SelenideTestBase {
 
     private IndexPageSelenide indexPageSelenide;

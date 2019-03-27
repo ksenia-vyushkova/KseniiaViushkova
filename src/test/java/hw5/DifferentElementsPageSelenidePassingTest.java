@@ -1,4 +1,4 @@
-package hw4;
+package hw5;
 
 import base.SelenideTestBase;
 import enums.User;
@@ -19,8 +19,8 @@ import static enums.elements.RadioButton.SELEN;
 import static enums.elements.SelectOption.YELLOW;
 
 @Feature("Smoke Test")
-@Story("Different Elements Page Test")
-public class DifferentElementsPageSelenideTest extends SelenideTestBase {
+@Story("Different Elements Page Intentionally Passing Test")
+public class DifferentElementsPageSelenidePassingTest extends SelenideTestBase {
 
     private IndexPageSelenide indexPageSelenide;
     private DifferentElementsPageSelenide differentElementsPageSelenide;
@@ -52,12 +52,12 @@ public class DifferentElementsPageSelenideTest extends SelenideTestBase {
         indexPageSelenide.checkUserName(user);
 
         //5 Click on "Service" subcategory in the header and check that drop down contains options
-        indexPageSelenide.openServiceHeaderDropdown();
-        indexPageSelenide.checkServiceHeaderDropdown();
+        //indexPageSelenide.openServiceHeaderDropdown();
+        //indexPageSelenide.checkServiceHeaderDropdown();
 
         //6 Click on Service subcategory in the left section and check that drop down contains options
-        indexPageSelenide.openServiceSidebarDropdown();
-        indexPageSelenide.checkServiceSidebarDropdown();
+        //indexPageSelenide.openServiceSidebarDropdown();
+        //indexPageSelenide.checkServiceSidebarDropdown();
 
         //7 Open through the header menu Service -> Different Elements Page
         indexPageSelenide.openDifferentElementsPageThroughHeaderDropdown();

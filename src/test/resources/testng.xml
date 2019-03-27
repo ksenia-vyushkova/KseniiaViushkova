@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Smoke Suite" verbose="1" parallel="methods" thread-count="3">
+    <test name="Smoke Test">
+
+        <packages>
+            <package name="hw4"/>
+            <package name="hw5"/>
+        </packages>
+
+    </test>
+</suite>
