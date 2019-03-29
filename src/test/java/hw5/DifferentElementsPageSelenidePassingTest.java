@@ -38,7 +38,7 @@ public class DifferentElementsPageSelenidePassingTest extends SelenideTestBase {
     }
 
     @Test
-    public void testDifferentElementsPage() {
+    public void testDifferentElementsPagePassing() {
         //1 Open test site by URL
         indexPageSelenide.openPage();
 
