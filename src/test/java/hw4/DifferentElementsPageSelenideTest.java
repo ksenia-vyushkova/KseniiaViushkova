@@ -3,6 +3,7 @@ package hw4;
 import base.SelenideTestBase;
 import enums.User;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Flaky;
 import io.qameta.allure.Story;
 import listeners.AllureAttachmentListener;
 import org.testng.annotations.AfterMethod;
@@ -12,8 +13,10 @@ import org.testng.annotations.Test;
 import pageObjects.DifferentElementsPageSelenide;
 import pageObjects.IndexPageSelenide;
 
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static enums.PageData.INDEX_PAGE;
 import static enums.User.PITER_CHALOVSKII;
 import static enums.elements.CheckBox.WATER;
 import static enums.elements.CheckBox.WIND;
@@ -31,7 +34,7 @@ public class DifferentElementsPageSelenideTest extends SelenideTestBase {
 
     @BeforeClass
     public void beforeClass() {
-        indexPageSelenide = page(IndexPageSelenide.class);
+        indexPageSelenide = open(INDEX_PAGE.url, IndexPageSelenide.class);
         differentElementsPageSelenide = page(DifferentElementsPageSelenide.class);
     }
 
@@ -40,6 +43,7 @@ public class DifferentElementsPageSelenideTest extends SelenideTestBase {
         getWebDriver().manage().deleteAllCookies();
     }
 
+    @Flaky
     @Test
     public void testDifferentElementsPage() {
         //1 Open test site by URL

@@ -12,8 +12,10 @@ import org.testng.annotations.Test;
 import pageObjects.DifferentElementsPageSelenide;
 import pageObjects.IndexPageSelenide;
 
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static enums.PageData.INDEX_PAGE;
 import static enums.User.PITER_CHALOVSKII;
 import static enums.elements.CheckBox.WATER;
 import static enums.elements.CheckBox.WIND;
@@ -31,7 +33,7 @@ public class DifferentElementsPageSelenidePassingTest extends SelenideTestBase {
 
     @BeforeClass
     public void beforeClass() {
-        indexPageSelenide = page(IndexPageSelenide.class);
+        indexPageSelenide = open(INDEX_PAGE.url,IndexPageSelenide.class);
         differentElementsPageSelenide = page(DifferentElementsPageSelenide.class);
     }
 

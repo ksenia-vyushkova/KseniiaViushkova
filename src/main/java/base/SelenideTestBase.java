@@ -13,6 +13,6 @@ public class SelenideTestBase {
         Configuration.browser = "chrome";
         Configuration.timeout = 5000;
         Configuration.pollingInterval = 100;
-        Configuration.collectionsPollingInterval = 200;
+        Configuration.startMaximized = true;
     }
 }
