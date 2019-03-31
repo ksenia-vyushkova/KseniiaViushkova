@@ -5,7 +5,6 @@ import listeners.AllureAttachmentListener;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 
-@Listeners(AllureAttachmentListener.class)
 public class SelenideTestBase {
 
     @BeforeSuite

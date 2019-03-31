@@ -4,8 +4,10 @@ import base.SelenideTestBase;
 import enums.User;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import listeners.AllureAttachmentListener;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pageObjects.DatesPageSelenide;
 import pageObjects.IndexPageSelenide;
@@ -16,6 +18,7 @@ import static enums.User.PITER_CHALOVSKII;
 
 @Feature("Smoke Test")
 @Story("Dates Page Sliders Test")
+@Listeners(AllureAttachmentListener.class)
 public class DatesPageSlidersSelenideTest extends SelenideTestBase {
 
     private IndexPageSelenide indexPageSelenide;

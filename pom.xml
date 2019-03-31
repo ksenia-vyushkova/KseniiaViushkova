@@ -11,7 +11,7 @@
     <properties>
         <suiteXmlFile>testng.xml</suiteXmlFile>
         <allure.version>2.9.0</allure.version>
-        <aspectj.version>1.8.14</aspectj.version>
+        <aspectj.version>1.9.2</aspectj.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -129,7 +129,10 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.9</version>
+                <version>2.10.0</version>
+                <configuration>
+                    <reportVersion>2.7.0</reportVersion>
+                </configuration>
             </plugin>
         </plugins>
     </reporting>

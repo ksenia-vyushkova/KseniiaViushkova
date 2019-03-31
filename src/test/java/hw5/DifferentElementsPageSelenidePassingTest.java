@@ -4,8 +4,10 @@ import base.SelenideTestBase;
 import enums.User;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import listeners.AllureAttachmentListener;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pageObjects.DifferentElementsPageSelenide;
 import pageObjects.IndexPageSelenide;
@@ -20,6 +22,7 @@ import static enums.elements.SelectOption.YELLOW;
 
 @Feature("Smoke Test")
 @Story("Different Elements Page Intentionally Passing Test")
+@Listeners(AllureAttachmentListener.class)
 public class DifferentElementsPageSelenidePassingTest extends SelenideTestBase {
 
     private IndexPageSelenide indexPageSelenide;
