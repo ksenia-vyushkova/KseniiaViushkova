@@ -6,6 +6,7 @@ Feature: Service Page Interface Tests
 
     When I login as user PITER_CHALOVSKII
     Then Username is displayed and has value pertaining to user PITER_CHALOVSKII
+    And Home Page contains main elements
 
     When I click on "Service" button in Header
     Then Header "Service" dropdown contains appropriate services
