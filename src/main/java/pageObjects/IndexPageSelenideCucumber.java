@@ -42,9 +42,6 @@ public class IndexPageSelenideCucumber {
     @FindBy(css = ".uui-side-bar  .sidebar-menu li[index='3']")
     private SelenideElement serviceSidebarDropdown;
 
-    @FindBy(css = ".uui-side-bar  .sidebar-menu li[index='3'] .sub")
-    private SelenideElement serviceSidebarDropdownMenu;
-
     @FindBy(css = ".uui-header  .uui-navigation.nav .dropdown .dropdown-menu > li")
     private List<SelenideElement> headerNavServices;
 
@@ -54,8 +51,8 @@ public class IndexPageSelenideCucumber {
     @FindBy(xpath = "//nav//a[contains(text(), 'Different elements')]")
     private SelenideElement differentElementsHeaderNavOption;
 
-    @FindBy(xpath = "//div[@name='navigation-sidebar']//a/span[contains(text(), 'Dates')]")
-    private SelenideElement datesSidebarNavOption;
+    @FindBy(xpath = "//nav//a[contains(text(), 'User Table')]")
+    private SelenideElement userTableHeaderNavOption;
 
     public IndexPageSelenideCucumber() {
         page(this);
@@ -79,7 +76,7 @@ public class IndexPageSelenideCucumber {
     }
 
     @Step
-    @When("I open Different Elements page through Service header dropdown")
+    @When("I open \"Different Elements\" page through \"Service\" header dropdown")
     public void openDifferentElementsPageThroughHeaderDropdown() {
         if (!isServiceHeaderDropDownOpen()) {
             openServiceHeaderDropdown();
@@ -88,30 +85,27 @@ public class IndexPageSelenideCucumber {
     }
 
     @Step
-    @When("I open Dates page through Service sidebar dropdown")
-    public void openDatesPageThroughSidebarDropdown() {
-        if (!isServiceSidebarDropDownOpen()) {
-            openServiceSidebarDropdown();
-        }
-        datesSidebarNavOption.click();
-    }
-
-    @Step
-    @When("I click on Service header dropdown")
+    @When("I click on \"Service\" button in Header")
     public void openServiceHeaderDropdown() {
         serviceHeaderDropdown.click();
     }
 
     @Step
-    @When("I click on Service sidebar dropdown")
+    @When("I click on \"Service\" sidebar dropdown")
     public void openServiceSidebarDropdown() {
         serviceSidebarDropdown.click();
+    }
+
+    @Step
+    @When("I click on \"User Table\" button in Service dropdown")
+    public void selectUserTsbleInHeaderDropdown() {
+        userTableHeaderNavOption.click();
     }
 
     //================================checks===================================
 
     @Step
-    @Then("The browser title is Home Page")
+    @Then("The browser title is correct")
     public void checkTitle() {
         assertEquals(getWebDriver().getTitle(), INDEX_PAGE.title);
     }
@@ -124,7 +118,7 @@ public class IndexPageSelenideCucumber {
     }
 
     @Step
-    @Then("Header Service dropdown contains appropriate services")
+    @Then("Header \"Service\" dropdown contains appropriate services")
     public void checkServiceHeaderDropdown() {
         for (HeaderService service : HeaderService.values()) {
             headerNavServices.get(service.position).shouldBe(visible);
@@ -133,7 +127,7 @@ public class IndexPageSelenideCucumber {
     }
 
     @Step
-    @Then("Sidebar Service dropdown contains appropriate services")
+    @Then("Sidebar \"Service\" dropdown contains appropriate services")
     public void checkServiceSidebarDropdown() {
         for (SidebarService service : SidebarService.values()) {
             sidebarNavServices.get(service.position).shouldBe(visible);
@@ -145,9 +139,5 @@ public class IndexPageSelenideCucumber {
 
     private boolean isServiceHeaderDropDownOpen() {
         return serviceHeaderDropdown.getAttribute("class").contains("open");
-    }
-
-    private boolean isServiceSidebarDropDownOpen() {
-        return !serviceSidebarDropdownMenu.getAttribute("class").contains("hide-menu");
     }
 }

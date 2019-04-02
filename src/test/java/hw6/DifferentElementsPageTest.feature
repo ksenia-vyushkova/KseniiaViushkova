@@ -2,18 +2,18 @@ Feature: Service Page Interface Tests
 
   Scenario: Service Page Interface Test
     Given I'm on the Home Page
-    Then The browser title is Home Page
+    Then The browser title is correct
 
     When I login as user PITER_CHALOVSKII
     Then Username is displayed and has value pertaining to user PITER_CHALOVSKII
 
-    When I click on Service header dropdown
-    Then Header Service dropdown contains appropriate services
+    When I click on "Service" button in Header
+    Then Header "Service" dropdown contains appropriate services
 
-    When I click on Service sidebar dropdown
-    Then Sidebar Service dropdown contains appropriate services
+    When I click on "Service" sidebar dropdown
+    Then Sidebar "Service" dropdown contains appropriate services
 
-    When I open Different Elements page through Service header dropdown
+    When I open "Different Elements" page through "Service" header dropdown
     Then Expected elements are present
     And Navigation sidebar is displayed
     And Log sidebar is displayed
