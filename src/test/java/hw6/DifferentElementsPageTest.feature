@@ -1,3 +1,6 @@
+# TODO Take a look on the recommended project structure https://docs.cucumber.io/guides/10-minute-tutorial/
+# TODO Basically, you should not create methods that sound like "I click/tick/whatever_low_level_action".
+#      Just think about business stuff, for the example "I select nature element WATER"
 Feature: Service Page Interface Tests
 
   Scenario: Service Page Interface Test
@@ -8,6 +11,7 @@ Feature: Service Page Interface Tests
     Then Username is displayed and has value pertaining to user PITER_CHALOVSKII
     And Home Page contains main elements
 
+    # TODO It will be better with parameter
     When I click on "Service" button in Header
     Then Header "Service" dropdown contains appropriate services
 
@@ -15,6 +19,7 @@ Feature: Service Page Interface Tests
     Then Sidebar "Service" dropdown contains appropriate services
 
     When I open "Different Elements" page through "Service" header dropdown
+    #!TODO
     Then Expected elements are present
     And Navigation sidebar is displayed
     And Log sidebar is displayed
