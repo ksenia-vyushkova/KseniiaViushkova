@@ -4,8 +4,8 @@ Feature: User Table Interface Tests
 
     Given I'm on the Home Page
     When I login as user PITER_CHALOVSKII
-    When I click on "Service" button in Header
-    And I click on "User Table" button in Service dropdown
+    When I open Service dropdown in header
+    And I open USER_TABLE page through Service header dropdown
     Then "User Table" page is opened
     And 6 NumberType Dropdowns are displayed on Users Table on User Table Page
     And 6 User names are displayed on Users Table on User Table Page

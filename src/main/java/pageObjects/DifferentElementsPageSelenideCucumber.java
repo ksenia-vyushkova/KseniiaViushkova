@@ -43,7 +43,7 @@ public class DifferentElementsPageSelenideCucumber {
     //================================methods==================================
 
     @Step
-    @When("I tick checkbox (.+)")
+    @When("I select (.+) element")
     public void tickCheckBox(CheckBox cb) {
         SelenideElement checkBox = checkBoxes.get(cb.position);
         if (!checkBox.isSelected()) {
@@ -52,7 +52,7 @@ public class DifferentElementsPageSelenideCucumber {
     }
 
     @Step
-    @When("I untick checkbox (.+)")
+    @When("I deselect (.+) element")
     public void untickCheckBox(CheckBox cb) {
         SelenideElement checkBox = checkBoxes.get(cb.position);
         if (checkBox.isSelected()) {
@@ -61,7 +61,7 @@ public class DifferentElementsPageSelenideCucumber {
     }
 
     @Step
-    @When("I select radio button (.+)")
+    @When("I select (.+) material")
     public void tickRadioButton(RadioButton rb) {
         radioButtons.get(rb.position).click();
     }
@@ -96,14 +96,14 @@ public class DifferentElementsPageSelenideCucumber {
     }
 
     @Step
-    @Then("Last log contains a record about of ticking checkbox (.+)")
+    @Then("Last log contains a record about selecting (.+) element")
     public void checkLastLogContains(CheckBox cb) {
         log.shouldHave(text(cb.label));
         log.shouldHave(text(cb.on));
     }
 
     @Step
-    @Then("Last log contains a record about of selecting radio button (.+)")
+    @Then("Last log contains a record about selecting (.+) material")
     public void checkLastLogContains(RadioButton rb) {
         log.shouldHave(text(rb.elementName));
         log.shouldHave(text(rb.label));
@@ -117,14 +117,14 @@ public class DifferentElementsPageSelenideCucumber {
     }
 
     @Step
-    @Then("Last log contains a record about of unticking checkbox (.+)")
+    @Then("Last log contains a record about deselecting (.+) element")
     public void checkLastLogContainsUnselected(CheckBox cb) {
         log.shouldHave(text(cb.label));
         log.shouldHave(text(cb.off));
     }
 
     @Step
-    @Then("Checkbox (.+) is unchecked")
+    @Then("Element (.+) is deselected")
     public void checkCheckBoxUnchecked(CheckBox cb) {
         checkBoxes.get(cb.position).shouldNotBe(selected);
     }

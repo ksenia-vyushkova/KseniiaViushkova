@@ -1,4 +1,4 @@
-package runners;
+package hw6;
 
 import com.codeborne.selenide.Configuration;
 import cucumber.api.CucumberOptions;
@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static enums.PageData.INDEX_PAGE;
 
-@CucumberOptions(features = "src/test/java/hw6", glue = "pageObjects")
+@CucumberOptions(features = "src/test/resources/hw6", glue = {"pageObjects", "hw6"})
 public class CucumberTestngRunner extends AbstractTestNGCucumberTests {
 
     @BeforeSuite

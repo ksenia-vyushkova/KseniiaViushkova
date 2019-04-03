@@ -4,8 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import enums.HeaderService;
-import enums.SidebarService;
+import enums.NavService;
 import enums.User;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
@@ -60,16 +59,10 @@ public class IndexPageSelenideCucumber {
     private SelenideElement serviceSidebarDropdown;
 
     @FindBy(css = ".uui-header  .uui-navigation.nav .dropdown .dropdown-menu > li")
-    private List<SelenideElement> headerNavServices;
+    private ElementsCollection headerNavServices;
 
     @FindBy(css = ".uui-side-bar  .sidebar-menu li[index='3'] .sub > li")
-    private List<SelenideElement> sidebarNavServices;
-
-    @FindBy(xpath = "//nav//a[contains(text(), 'Different elements')]")
-    private SelenideElement differentElementsHeaderNavOption;
-
-    @FindBy(xpath = "//nav//a[contains(text(), 'User Table')]")
-    private SelenideElement userTableHeaderNavOption;
+    private ElementsCollection sidebarNavServices;
 
     public IndexPageSelenideCucumber() {
         page(this);
@@ -93,36 +86,30 @@ public class IndexPageSelenideCucumber {
     }
 
     @Step
-    @When("I open \"Different Elements\" page through \"Service\" header dropdown")
-    public void openDifferentElementsPageThroughHeaderDropdown() {
+    @When("I open (.+) page through Service header dropdown")
+    public void openDifferentElementsPageThroughHeaderDropdown(NavService service) {
         if (!isServiceHeaderDropDownOpen()) {
             openServiceHeaderDropdown();
         }
-        differentElementsHeaderNavOption.click();
+        headerNavServices.find(text(service.headerName)).click();
     }
 
     @Step
-    @When("I click on \"Service\" button in Header")
+    @When("I open Service dropdown in header")
     public void openServiceHeaderDropdown() {
         serviceHeaderDropdown.click();
     }
 
     @Step
-    @When("I click on \"Service\" sidebar dropdown")
+    @When("I open Service sidebar dropdown")
     public void openServiceSidebarDropdown() {
         serviceSidebarDropdown.click();
-    }
-
-    @Step
-    @When("I click on \"User Table\" button in Service dropdown")
-    public void selectUserTsbleInHeaderDropdown() {
-        userTableHeaderNavOption.click();
     }
 
     //================================checks===================================
 
     @Step
-    @Then("The browser title is correct")
+    @Then("The page title is correct")
     public void checkTitle() {
         assertEquals(getWebDriver().getTitle(), INDEX_PAGE.title);
     }
@@ -144,21 +131,24 @@ public class IndexPageSelenideCucumber {
     }
 
     @Step
-    @Then("Header \"Service\" dropdown contains appropriate services")
-    public void checkServiceHeaderDropdown() {
-        for (HeaderService service : HeaderService.values()) {
-            headerNavServices.get(service.position).shouldBe(visible);
-            headerNavServices.get(service.position).shouldHave(text(service.headerName));
-        }
+    @Then("Header Service dropdown contains services:")
+    public void checkServiceHeaderDropdown(List<NavService> services) {
+        List<String> expectedServiceNames = services.stream().map(i -> i.headerName).collect(Collectors.toList());
+        List<String> actualServiceNames = headerNavServices.stream().map(WebElement::getText).collect(Collectors.toList());
+
+        headerNavServices.forEach(i -> i.shouldBe(visible));
+        assertEquals(actualServiceNames, expectedServiceNames);
+
     }
 
     @Step
-    @Then("Sidebar \"Service\" dropdown contains appropriate services")
-    public void checkServiceSidebarDropdown() {
-        for (SidebarService service : SidebarService.values()) {
-            sidebarNavServices.get(service.position).shouldBe(visible);
-            sidebarNavServices.get(service.position).shouldHave(text(service.sidebarName));
-        }
+    @Then("Sidebar Service dropdown contains services:")
+    public void checkServiceSidebarDropdown(List<NavService> services) {
+        List<String> expectedServiceNames = services.stream().map(i -> i.sidebarName).collect(Collectors.toList());
+        List<String> actualServiceNames = sidebarNavServices.stream().map(WebElement::getText).collect(Collectors.toList());
+
+        sidebarNavServices.forEach(i -> i.shouldBe(visible));
+        assertEquals(actualServiceNames, expectedServiceNames);
     }
 
     //================================private==================================
