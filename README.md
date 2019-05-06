@@ -25,6 +25,12 @@ datesPageSelenide.checkLog(30, 70);
 
 Screenshots of Jenkins job and Allure report can be found at \src\test\resources\hw5
 
+Command to run tests from hw5:
+
+```
+clean test -DsuiteXmlFile=testng-hw5.xml
+```
+
 ## HW6
 
 Command to run tests from hw6:
