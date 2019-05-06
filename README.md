@@ -2,6 +2,10 @@
 
 Self-study. Spring 2019
 
+## HW1
+
+Basic tests. No testng.xml file.
+
 ## HW2
 
 Commands to run tests from hw2:
