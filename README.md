@@ -18,7 +18,7 @@ DatesPageSlidersSelenideTest fails. It is expected behavior so far.
 In order for the test to pass, comment the following line in file DatesPageSlidersSelenideTest.java:
 
 ```
-datesPageSelenide.checkLastLogContains(LEFT_SLIDER, 30);
+datesPageSelenide.checkLog(30, 70);
 ```
 
 ## HW5
