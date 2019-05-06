@@ -16,6 +16,10 @@ clean test -DsuiteXmlFile=testng-hw2-ex2-regression.xml
 clean test -DsuiteXmlFile=testng-hw2-ex3.xml
 ```
 
+## HW3
+
+Basic PageObject test. No "testng.xml" file.
+
 ## HW4
 
 DatesPageSlidersSelenideTest fails. It is expected behavior so far.
