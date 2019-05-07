@@ -45,3 +45,5 @@ Command to run tests from hw6:
 ```
 clean test -DsuiteXmlFile=testng-hw6.xml
 ```
+
+## Future
